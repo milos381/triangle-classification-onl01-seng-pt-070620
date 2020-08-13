@@ -38,11 +38,21 @@ class Triangle
     @triangle_one = triangle_one
     @triangle_two = triangle_two
     @triangle_three = triangle_three
-    @lenghts = [@triangle_one, @triangle_two, @triangle_three]
+    @lengths = [@triangle_one, @triangle_two, @triangle_three]
   end
 
-  def kind(one, two, three)
-
+  def kind(@lengths)
+    if @lengths.any? {|length| length < 0} && @lengths[0] + @lengths[1] < @lengths[2] || @lengths[0] + @lengths[2] < @lengths[1] || @lengths[2] + @lengths[1] < @lengths[0]
+      raise TriangleError
+    elsif @lengths[0] == @lengths[1] && @lengths[1] == @lengths[2]
+      :equilateral
+    elsif @lengths[0] == @lengths[1] || @lengths[1] == @lengths[2] || @lengths[0] == @lengths[2]
+      :isosceles
+    else
+      :scalene
+    end
+    class TriangleError < StandardError
+    end  
   end
 
 end
