@@ -42,8 +42,8 @@ class Triangle
   end
 
   def kind
-    if @lengths.any?{|length| length <= 0} && (@lengths[0] + @lengths[1]) < @lengths[2] || (@lengths[0] + @lengths[2]) < @lengths[1] ||( @lengths[2] + @lengths[1]) < @lengths[0]
-
+    if @lengths.any?{|side| side <= 0} && (@lengths[0] + @lengths[1]) < @lengths[2] || (@lengths[0] + @lengths[2]) < @lengths[1] ||( @lengths[2] + @lengths[1]) < @lengths[0]
+ if @lenghts.any?{|side| side <= 0 } && ((@lenghts[0] + @lenghts[1]) < @lenghts[2] || (@lenghts[0] + @lenghts[2]) < @lenghts[1] || (@lenghts[2] + @lenghts[1]) < @lenghts[0])
       raise TriangleError
     elsif @lengths[0] == @lengths[1] && @lengths[1] == @lengths[2]
       :equilateral
